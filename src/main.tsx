@@ -9,6 +9,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />}></Route>
+                <Route path=":articleID" element={"articleid"}>
+                    <Route path=":sidebarType" element={"sidebarType"}>
+                        <Route path=":questionSetId" element={"questionSetId"}></Route>
+                    </Route>
+                </Route>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
