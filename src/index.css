@@ -121,3 +121,11 @@ TAILWIND UTIL
 .see-more-btn:hover {
     text-decoration: underline;
 }
+
+.main-title::before {
+    content: "🗒️ ";
+}
+
+.anat-title::before {
+    content: "🩺 ";
+}

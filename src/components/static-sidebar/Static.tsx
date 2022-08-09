@@ -21,10 +21,10 @@ export default function Static(props: StaticProps) {
 
     return (
         <div className="static-sidebar sidebar p-4 grow overflow-y-scroll h-screen">
-            <h1 className="text-3xl font-bold sidebar-heading header-font">{staticData?.type}</h1>
+            <h1 className="main-title text-3xl font-bold sidebar-heading header-font">{staticData?.type}</h1>
             <img src={staticData?.mainImgLink} alt="" className="w-full" />
             {staticData?.descriptions && <ToggleableText text={staticData.descriptions}></ToggleableText>}
-            <h1 className="text-3xl font-bold sidebar-heading header-font">Visualization Anatomy</h1>
+            <h1 className="anat-title text-3xl font-bold sidebar-heading header-font">Visualization Anatomy</h1>
             <img src={staticData?.anatImgLink} alt="" className="w-full" />
         </div>
     );

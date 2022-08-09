@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { articleID } from "../DataResources/articleID";
+import { useToggleableSwitch } from "../hooks/useToggleableSwitch";
 import { Nullable } from "../models";
 
 interface URLData {
@@ -15,6 +16,9 @@ export default function ArticleFrame() {
     const [articleLink, setArticleLink] = useState<Nullable<number>>(null);
     const [sideBarType, setSideBarType] = useState<Nullable<string>>(null);
     const params = useParams();
+
+    //for btn
+    const [showSidebar, sidebarToggle] = useToggleableSwitch();
 
     useEffect(() => {
         /*
@@ -46,11 +50,23 @@ export default function ArticleFrame() {
         <div className="h-100">
             <URLContext.Provider value={value}>
                 {articleLink && (
-                    <div className="frame-container flex">
+                    <div className="frame-container flex relative">
                         <iframe className="w-full h-screen" src={articleID[articleLink - 1].url}></iframe>
-                        <section className="sidebar-container">
-                            <Outlet />
-                        </section>
+                        {showSidebar && (
+                            <section className="sidebar-container">
+                                <Outlet />
+                            </section>
+                        )}
+                        <button
+                            className="bg-[#3d3d3f] py-2 px-3 text-white rounded-lg text-xl readable-font text-left shadow-lg absolute top-4 hover:shadow-2xl z-10"
+                            style={{ right: showSidebar ? "470px" : "15px" }}
+                            onClick={() => {
+                                sidebarToggle();
+                            }}
+                        >
+                            <strong className="text-xl">Expert Goggles</strong>
+                            <p>Click to {showSidebar ? "close" : "show"} guidence</p>
+                        </button>
                     </div>
                 )}
             </URLContext.Provider>

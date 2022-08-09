@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 function App() {
     return (
-        <div className="min-w-full min-h-full">
+        <div className="min-w-full min-h-full overflow-hidden">
             <Outlet />
         </div>
     );

@@ -8,7 +8,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="Expert-Goggles-Learning-Sim">
             <Routes>
                 <Route path="/" element={<App />}></Route>
                 <Route path=":articleID" element={<ArticleFrame />}>

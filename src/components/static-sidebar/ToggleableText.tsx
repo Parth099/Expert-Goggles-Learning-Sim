@@ -16,7 +16,7 @@ export default function ToggleableText(props: ToggleableTextProps) {
 
     return (
         <section>
-            <div className="sb-text-font my-3">
+            <div className="sb-text-font mt-3 mb-1">
                 {props.text.map((val, i) => {
                     const type = val.type;
                     const text = val.text;
