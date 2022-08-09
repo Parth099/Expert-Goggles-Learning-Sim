@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,500&display=swap");
 /*reset css*/
 /* Box sizing rules */
 *,
@@ -91,3 +92,32 @@ TAILWIND UTIL
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sidebar-container {
+    border-left: 1px solid rgb(22, 22, 22);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.sidebar-heading {
+    border-bottom: 3px solid black;
+}
+
+.sidebar-container {
+    flex: 0 0 450px;
+}
+
+.header-font {
+    font-family: "Montserrat", Helvetica !important;
+}
+
+.sb-text-font {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.see-more-btn {
+    color: #4487f6;
+}
+
+.see-more-btn:hover {
+    text-decoration: underline;
+}

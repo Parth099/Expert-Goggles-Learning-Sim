@@ -1,8 +1,14 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { createContext, useEffect, useState } from "react";
+import { Outlet, useParams } from "react-router-dom";
 import { articleID } from "../DataResources/articleID";
+import { Nullable } from "../models";
 
-type Nullable<T> = T | null;
+interface URLData {
+    articleType: Nullable<string>;
+    sideBarType: Nullable<string>;
+}
+
+export const URLContext = createContext<Nullable<URLData>>(null);
 
 export default function ArticleFrame() {
     //index the articleIDs
@@ -34,11 +40,20 @@ export default function ArticleFrame() {
         setSideBarType(params.sideBarType);
     }, [params]);
 
-    console.log(params);
+    const value: URLData = { articleType: articleLink ? articleID[articleLink - 1].viz : "Scatter Plot", sideBarType };
 
     return (
-        <div className="frame-container h-100">
-            {articleLink && <iframe className="w-full h-screen" src={articleID[articleLink - 1].url}></iframe>}
+        <div className="h-100">
+            <URLContext.Provider value={value}>
+                {articleLink && (
+                    <div className="frame-container flex">
+                        <iframe className="w-full h-screen" src={articleID[articleLink - 1].url}></iframe>
+                        <section className="sidebar-container">
+                            <Outlet />
+                        </section>
+                    </div>
+                )}
+            </URLContext.Provider>
         </div>
     );
 }

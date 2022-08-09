@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import ArticleFrame from "./components/ArticleFrame";
+import SidebarSwitch from "./components/SidebarSwitch";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -11,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <Routes>
                 <Route path="/" element={<App />}></Route>
                 <Route path=":articleID" element={<ArticleFrame />}>
-                    <Route path=":sideBarType" element={"sidebarType"}>
+                    <Route path=":sideBarType" element={<SidebarSwitch />}>
                         <Route path=":questionSetId" element={"questionSetId"}></Route>
                     </Route>
                 </Route>
