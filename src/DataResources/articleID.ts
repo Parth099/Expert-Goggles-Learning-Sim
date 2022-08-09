@@ -1,4 +1,4 @@
-export interface ArticleLink {
+interface ArticleLink {
     url: string;
     viz: string;
 }
