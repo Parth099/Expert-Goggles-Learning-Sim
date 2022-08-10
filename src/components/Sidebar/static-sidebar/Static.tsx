@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { ScrapedData, StaticSidebarData } from "../../DataResources/static";
-import { Nullable } from "../../models";
-import { StaticProps } from "../Sidebar/propTypes";
+import { ScrapedData, StaticSidebarData } from "../../../DataResources/static";
+import { Nullable } from "../../../models";
+import { StaticProps } from "../propTypes";
 import ToggleableText from "./ToggleableText";
 
 export default function Static(props: StaticProps) {

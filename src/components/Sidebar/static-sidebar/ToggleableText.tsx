@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useToggleableSwitch } from "../../hooks/useToggleableSwitch";
-import { ToggleableTextProps } from "../Sidebar/propTypes";
+import { useToggleableSwitch } from "../../../hooks/useToggleableSwitch";
+import { ToggleableTextProps } from "../propTypes";
 
 const CHARLIMIT = 200;
 

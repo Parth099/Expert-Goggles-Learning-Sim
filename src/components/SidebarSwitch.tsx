@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useToggleableSwitch } from "../hooks/useToggleableSwitch";
 import { URLContext } from "./ArticleFrame";
-import QandA from "./Sidebar/QandA";
-import Static from "./static-sidebar/Static";
+import QandA from "./Sidebar/QandA/QandA";
+import Static from "./Sidebar/static-sidebar/Static";
 
 export default function SidebarSwitch() {
     const urlInfo = useContext(URLContext);

@@ -129,3 +129,32 @@ TAILWIND UTIL
 .anat-title::before {
     content: "🩺 ";
 }
+
+.options-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: x-large;
+    gap: 16px;
+    font-weight: bold;
+}
+
+.options-button {
+    padding: 12px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 5px;
+}
+
+
+.options-button.wrong {
+    color: rgb(116, 0, 0) !important;
+}
+
+.options-button.correct {
+    color: #007c00 !important;
+}
+
+.next-btn {
+    background: #4487f6;
+    color: white;
+}
