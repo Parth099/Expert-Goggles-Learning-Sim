@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function TextQuestions(props: any) {
+export default function ImageQuestions(props: any) {
     const [userIsCorrect, setUserIsCorrect] = useState(false);
     const [optionMessage, setOptionMessage] = useState("");
     const [selectedCorrect, setSelectedCorrect] = useState(0);
@@ -30,28 +30,34 @@ export default function TextQuestions(props: any) {
     return (
         <div>
             <h2 className=" font-bold text-3xl header-font mb-6">{props.content.title}</h2>
-            <div className="options-container">
-                <p className="text-lg italic">Choose {props.content.correct.length} option(s).</p>
+            <p className="text-lg italic">Choose {props.content.correct.length} option(s).</p>
+            <div className="img-options-container grid grid-cols-2 gap-3">
                 {props.content.options.map((value: string, index: number) => {
                     return (
-                        <button type="button" className="options-button hover:text-blue-700" data-index={index} key={index} onClick={handleSelection}>
-                            {value}
+                        <button
+                            type="button"
+                            className="img-options-button hover:text-blue-700"
+                            data-index={index}
+                            key={index}
+                            onClick={handleSelection}
+                        >
+                            <img src={value} className="options-image shadow-lg hover:shadow-xl hover:shadow-blue-200" data-index={index} />
                         </button>
                     );
                 })}
-                <p className="mt-8 text-lg">{optionMessage}</p>
-                {userIsCorrect && !props.isLast && (
-                    <button
-                        type="button"
-                        className="next-btn font-bold text-2xl rounded-lg hover:bg-blue-700 p-2 w-full"
-                        onClick={() => {
-                            props.moveFWD();
-                        }}
-                    >
-                        Next
-                    </button>
-                )}
             </div>
+            <p className="mt-8 text-lg font-bold">{optionMessage}</p>
+            {userIsCorrect && !props.isLast && (
+                <button
+                    type="button"
+                    className="next-btn font-bold text-2xl rounded-lg hover:bg-blue-700 p-2 w-full"
+                    onClick={() => {
+                        props.moveFWD();
+                    }}
+                >
+                    Next
+                </button>
+            )}
         </div>
     );
 }

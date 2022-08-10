@@ -52,14 +52,14 @@ export default function ArticleFrame() {
                 {articleLink && (
                     <div className="frame-container flex relative">
                         <iframe className="w-full h-screen" src={articleID[articleLink - 1].url}></iframe>
-                        {showSidebar && (
-                            <section className="sidebar-container">
-                                <Outlet />
-                            </section>
-                        )}
+
+                        <section className="sidebar-container max-h-screen overflow-y-scroll" style={{ display: showSidebar ? "block" : "none" }}>
+                            <Outlet />
+                        </section>
+
                         <button
                             className="bg-[#3d3d3f] py-2 px-3 text-white rounded-lg text-xl readable-font text-left shadow-lg absolute top-4 hover:shadow-2xl z-10"
-                            style={{ right: showSidebar ? "470px" : "15px" }}
+                            style={{ right: showSidebar ? "520px" : "15px" }}
                             onClick={() => {
                                 sidebarToggle();
                             }}
