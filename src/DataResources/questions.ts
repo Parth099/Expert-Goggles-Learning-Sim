@@ -13,8 +13,12 @@ export const QuestionStates: any[] = [
             {
                 title: "Which of these is a Scatter Plot",
                 qType: "image",
-                options: ["https://i.imgur.com/20NYeCO.png", "https://i.imgur.com/vHy2XLr.png"],
-                optionMessages: ["This is a Bubble Chart, notice the variance in the size of the data points", "Correct!"],
+                options: ["https://i.imgur.com/20NYeCO.png", "https://i.imgur.com/vHy2XLr.png", "https://i.imgur.com/xAT2eVm.png"],
+                optionMessages: [
+                    "This is a Bubble Chart, notice the variance in the size of the data points",
+                    "Correct!",
+                    "This is an Area Chart and not A Scatterplot",
+                ],
                 correct: [1],
             },
             {

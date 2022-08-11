@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
+import UUIDProvider, { useUUID } from "../context/UUIDContext";
 import { articleID } from "../DataResources/articleID";
 import { useToggleableSwitch } from "../hooks/useToggleableSwitch";
 import { Nullable } from "../models";
@@ -46,6 +47,9 @@ export default function ArticleFrame() {
 
     const value: URLData = { articleType: articleLink ? articleID[articleLink - 1].viz : "Scatter Plot", sideBarType };
 
+    const uuidInfo = useUUID();
+    console.log(uuidInfo);
+
     return (
         <div className="h-100">
             <URLContext.Provider value={value}>
@@ -53,7 +57,11 @@ export default function ArticleFrame() {
                     <div className="frame-container flex relative">
                         <iframe className="w-full h-screen" src={articleID[articleLink - 1].url}></iframe>
 
-                        <section className="sidebar-container max-h-screen overflow-y-scroll" style={{ display: showSidebar ? "block" : "none" }}>
+                        <section
+                            className="sidebar-container max-h-screen overflow-y-scroll relative"
+                            style={{ display: showSidebar ? "block" : "none" }}
+                        >
+                            <p className="absolute bottom-0 left-[10px] text-sm">Your UserID: {uuidInfo?.uuid}</p>
                             <Outlet />
                         </section>
 

@@ -145,7 +145,6 @@ TAILWIND UTIL
     border-radius: 5px;
 }
 
-
 .options-button.wrong {
     color: rgb(116, 0, 0) !important;
 }
@@ -157,4 +156,14 @@ TAILWIND UTIL
 .next-btn {
     background: #4487f6;
     color: white;
+}
+
+.img-options-button.wrong,
+.options-image.wrong {
+    border: 2px solid rgb(116, 0, 0) !important;
+}
+
+.img-options-button.correct,
+.options-image.correct {
+    border: 2px solid #007c00 !important;
 }

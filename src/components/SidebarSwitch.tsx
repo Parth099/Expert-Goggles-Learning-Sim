@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
-import { useToggleableSwitch } from "../hooks/useToggleableSwitch";
+import { useContext } from "react";
+import { useUUID } from "../context/UUIDContext";
 import { URLContext } from "./ArticleFrame";
 import QandA from "./Sidebar/QandA/QandA";
 import Static from "./Sidebar/static-sidebar/Static";
 
 export default function SidebarSwitch() {
     const urlInfo = useContext(URLContext);
-
     //expert goggles button toggle
- 
 
     if (!urlInfo?.sideBarType || !urlInfo.articleType) return <></>;
 

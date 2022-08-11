@@ -1,7 +1,4 @@
-import React from "react";
-
 export default function InformationDisplay(props: any) {
-    console.log(props);
     return (
         <div className="info-container">
             {props.content.details.map((val: any, index: number) => {

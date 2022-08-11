@@ -30,8 +30,8 @@ export default function TextQuestions(props: any) {
     return (
         <div>
             <h2 className=" font-bold text-3xl header-font mb-6">{props.content.title}</h2>
-            <div className="options-container">
-                <p className="text-lg italic">Choose {props.content.correct.length} option(s).</p>
+            <p className="text-lg italic">Choose {props.content.correct.length} option(s).</p>
+            <div className="mt-5 font-bold gap-4 text-2xl grid grid-cols-2">
                 {props.content.options.map((value: string, index: number) => {
                     return (
                         <button type="button" className="options-button hover:text-blue-700" data-index={index} key={index} onClick={handleSelection}>
@@ -39,19 +39,19 @@ export default function TextQuestions(props: any) {
                         </button>
                     );
                 })}
-                <p className="mt-8 text-lg">{optionMessage}</p>
-                {userIsCorrect && !props.isLast && (
-                    <button
-                        type="button"
-                        className="next-btn font-bold text-2xl rounded-lg hover:bg-blue-700 p-2 w-full"
-                        onClick={() => {
-                            props.moveFWD();
-                        }}
-                    >
-                        Next
-                    </button>
-                )}
             </div>
+            <p className="mt-8 text-lg font-bold">{optionMessage}</p>
+            {userIsCorrect && !props.isLast && (
+                <button
+                    type="button"
+                    className="next-btn font-bold text-2xl rounded-lg hover:bg-blue-700 p-2 w-full"
+                    onClick={() => {
+                        props.moveFWD();
+                    }}
+                >
+                    Next
+                </button>
+            )}
         </div>
     );
 }
