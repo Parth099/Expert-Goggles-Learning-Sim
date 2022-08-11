@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { ChildrenOnly, Nullable } from "../models";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4, validate } from "uuid";
 
 interface UUIDContextInterface {
     uuid: string;
@@ -16,7 +16,7 @@ export const useUUID = () => {
 };
 
 export default function UUIDProvider({ children }: ChildrenOnly) {
-    const [uuid, setUUID] = useState("");
+    const [uuid, setUUID] = useState("Your ID is being generated");
     const [isInitialized, setIsInitialized] = useState(false);
     useEffect(() => {
         const savedKey = localStorage.getItem(PROJECT_KEY);
@@ -33,7 +33,7 @@ export default function UUIDProvider({ children }: ChildrenOnly) {
 
     //update key if possible
     useEffect(() => {
-        if (uuid !== "" && !isInitialized) {
+        if (validate(uuid) && !isInitialized) {
             localStorage.setItem(PROJECT_KEY, uuid);
             setIsInitialized(true);
         }
