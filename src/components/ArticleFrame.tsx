@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
-import UUIDProvider, { useUUID } from "../context/UUIDContext";
+import { useDB } from "../context/useDatabase";
+import { useUUID } from "../context/UUIDContext";
 import { articleID } from "../DataResources/articleID";
-import { useToggleableSwitch } from "../hooks/useToggleableSwitch";
 import { Nullable } from "../models";
 
 interface URLData {
@@ -19,11 +19,11 @@ export default function ArticleFrame() {
     const params = useParams();
 
     //for btn
-    const [showSidebar, sidebarToggle] = useToggleableSwitch();
+    const [showSidebar, setShowSidebar] = useState(false);
 
     useEffect(() => {
         /*
-            ARTICLE FINDIND
+            ARTICLE FINDING
         */
 
         //if url is incorrect
@@ -47,8 +47,14 @@ export default function ArticleFrame() {
 
     const value: URLData = { articleType: articleLink ? articleID[articleLink - 1].viz : "Scatter Plot", sideBarType };
 
+    //custom context hooks to deliver relavent logic
     const uuidInfo = useUUID();
-    console.log(uuidInfo);
+    const DBContext = useDB();
+
+    useEffect(() => {
+        //dispatch a log write on sidebar state
+        DBContext?.logSidebarOpenClose(showSidebar);
+    }, [showSidebar]);
 
     return (
         <div className="h-100">
@@ -61,7 +67,7 @@ export default function ArticleFrame() {
                             className="sidebar-container max-h-screen overflow-y-scroll relative"
                             style={{ display: showSidebar ? "block" : "none" }}
                         >
-                            <p className="absolute bottom-0 left-[10px] text-sm">Your UserID: {uuidInfo?.uuid}</p>
+                            <p className="fixed bottom-0 left-[10px] text-sm">Your UserID: {uuidInfo?.uuid}</p>
                             <Outlet />
                         </section>
 
@@ -69,7 +75,7 @@ export default function ArticleFrame() {
                             className="bg-[#3d3d3f] py-2 px-3 text-white rounded-lg text-xl readable-font text-left shadow-lg absolute top-4 hover:shadow-2xl z-10"
                             style={{ right: showSidebar ? "520px" : "15px" }}
                             onClick={() => {
-                                sidebarToggle();
+                                setShowSidebar((currState) => !currState);
                             }}
                         >
                             <strong className="text-xl">Expert Goggles</strong>
