@@ -5,7 +5,7 @@ import { arrayUnion, collection, doc, setDoc, Timestamp, updateDoc } from "fireb
 import { storage } from "../../firebase.config";
 
 interface DBContextInterface {
-    logSidebarOpenClose: (sidebarState: boolean) => void;
+    logSidebarOpenClose: (sidebarState: boolean, assignedCondition: string) => void;
 }
 
 const DBContext = createContext<Nullable<DBContextInterface>>(null);
@@ -18,11 +18,11 @@ export const useDB = () => {
 export function DBProvider({ children }: ChildrenOnly) {
     const UUIDContext = useUUID();
 
-    const logSidebarOpenClose = (isOpen: boolean) => {
+    const logSidebarOpenClose = (isOpen: boolean, assignedCondition: string) => {
         if (!UUIDContext?.isInitialized) return; //if context is not available OR uuid has not been assigned
 
         //the db page is like : "/<UUID>/sidebar-log" -> writes to an array
-        const logDocRef = doc(storage, UUIDContext.uuid, "sidebar-log");
+        const logDocRef = doc(storage, UUIDContext.uuid, `sidebar-log-${assignedCondition}`);
         setDoc(
             logDocRef,
             {
