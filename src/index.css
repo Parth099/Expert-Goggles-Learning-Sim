@@ -167,3 +167,17 @@ TAILWIND UTIL
 .options-image.correct {
     border: 2px solid #007c00 !important;
 }
+
+textarea {
+    background: white;
+    border: 1px solid black;
+    box-shadow: inset 0 0 4px black;
+}
+
+.reflection-question::before{
+    position: absolute;
+    content: "-";
+    left: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

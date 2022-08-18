@@ -52,9 +52,9 @@ export default function ArticleFrame() {
     const DBContext = useDB();
 
     useEffect(() => {
-        if (!params.sideBarType) return;
+        if (!params.sideBarType || !articleLink) return;
         //dispatch a log write on sidebar state
-        DBContext?.logSidebarOpenClose(showSidebar, params.sideBarType);
+        DBContext?.logSidebarOpenClose(showSidebar, params.sideBarType, articleLink);
     }, [showSidebar]);
 
     return (

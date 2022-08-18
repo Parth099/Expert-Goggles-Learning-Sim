@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { QuestionStates } from "../../../DataResources/questions";
-import { QandAProps } from "../propTypes";
+import { StaticProps } from "../propTypes";
 import ImageQuestions from "./ImageQuestions";
 import InformationDisplay from "./InformationDisplay";
 import TextQuestions from "./TextQuestions";
 
-export default function QandA(props: QandAProps) {
+export default function QandA(props: StaticProps) {
     const [QuestionCollection, setQuestionCollection] = useState<any>(null);
     const [questionIndex, setQuestionIndex] = useState<number>(0);
 

@@ -11,3 +11,7 @@ export interface QandAProps {
 export interface ToggleableTextProps {
     text: TextDescription[];
 }
+
+export interface ArticleProps extends StaticProps {
+    articleId: string;
+}
